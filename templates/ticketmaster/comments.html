@@ -1,0 +1,33 @@
+{% extends 'ticketmaster/base.html' %}
+
+{% block body %}
+<h1>Comments</h1>
+
+
+<p>Reviews For {{ name }}</p>
+
+
+<a href="{% url 'add' name %}" class="btn btn-outline-primary mt-2 text-primary">Add Comment</a>
+
+
+
+   {% for comment in comments %}
+       {% if comment.event == name %}
+           <div class="card shadow-sm p-3 m-3">
+               <div class="row">
+                   <p class="fs-4 m-1 py-1">{{ comment.user }}</p>
+               </div>
+               <div class="row card m-1 py-2">
+                   <p>{{ comment.comment }}</p>
+               </div> 
+                <div>
+                    <a href="{% url 'update' name comment.id %}" class="btn btn-outline-primary mt-2 text-primary">Update</a>
+                    <a href="{% url 'delete' name comment.id %}" class="btn btn-outline-primary mt-2 text-primary">  Delete</a>
+                </div>
+           </div>
+       {% endif %}
+   {%  endfor %}
+
+
+{% endblock %}
+

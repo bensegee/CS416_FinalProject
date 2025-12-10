@@ -1,0 +1,17 @@
+{% extends 'ticketmaster/base.html' %}
+
+
+{% block title %}
+   <title>Sure</title>
+{%  endblock %}
+
+
+{% block body %}
+   <form action="{% url 'delete' name comment.id %}" method="post">
+       {% csrf_token %}
+           <h3>Are you sure that you want to delete  {{ comment.event }}?</h3>
+       <input type="submit" value="Delete">
+   </form>
+   <a href="{% url 'comments' name %}">Cancel</a>
+{% endblock %}
+

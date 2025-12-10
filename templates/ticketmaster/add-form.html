@@ -1,0 +1,20 @@
+{% extends 'ticketmaster/base.html' %}
+
+
+{% block title %}
+   <title>Products</title>
+{% endblock %}
+
+
+{% block body %}
+   <h1>Product form</h1>
+   <p>Event Name: {{ name }}</p>
+   <form method="post">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <input type="submit">
+   </form>
+  
+{% endblock %}
+
+
